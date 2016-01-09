@@ -89,8 +89,11 @@
     self.shouldScrollToBottomAfterKeyboardShows = NO;
     self.inverted = YES;
     
-    [self.leftButton setImage:[UIImage imageNamed:@"icn_upload"] forState:UIControlStateNormal];
-    [self.leftButton setTintColor:[UIColor grayColor]];
+    [self.leftButton1 setImage:[UIImage imageNamed:@"icn_upload"] forState:UIControlStateNormal];
+    [self.leftButton1 setTintColor:[UIColor grayColor]];
+    
+    [self.leftButton2 setImage:[UIImage imageNamed:@"icn_upload"] forState:UIControlStateNormal];
+    [self.leftButton2 setTintColor:[UIColor grayColor]];
     
     [self.rightButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
     
@@ -370,11 +373,18 @@
     [super textDidUpdate:animated];
 }
 
-- (void)didPressLeftButton:(id)sender
+- (void)didPressLeftButton1:(id)sender
 {
     // Notifies the view controller when the left button's action has been triggered, manually.
     
-    [super didPressLeftButton:sender];
+    [super didPressLeftButton1:sender];
+}
+
+- (void)didPressLeftButton2:(id)sender
+{
+    // Notifies the view controller when the left button's action has been triggered, manually.
+    
+    [super didPressLeftButton2:sender];
 }
 
 - (void)didPressRightButton:(id)sender

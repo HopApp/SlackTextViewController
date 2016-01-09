@@ -313,7 +313,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         _textInputbar.translatesAutoresizingMaskIntoConstraints = NO;
         _textInputbar.controller = self;
         
-        [_textInputbar.leftButton addTarget:self action:@selector(didPressLeftButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_textInputbar.leftButton1 addTarget:self action:@selector(didPressLeftButton1:) forControlEvents:UIControlEventTouchUpInside];
+        [_textInputbar.leftButton2 addTarget:self action:@selector(didPressLeftButton2:) forControlEvents:UIControlEventTouchUpInside];
         [_textInputbar.rightButton addTarget:self action:@selector(didPressRightButton:) forControlEvents:UIControlEventTouchUpInside];
         [_textInputbar.editorLeftButton addTarget:self action:@selector(didCancelTextEditing:) forControlEvents:UIControlEventTouchUpInside];
         [_textInputbar.editorRightButton addTarget:self action:@selector(didCommitTextEditing:) forControlEvents:UIControlEventTouchUpInside];
@@ -360,9 +361,14 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     return self.textInputbar.textView;
 }
 
-- (UIButton *)leftButton
+- (UIButton *)leftButton1
 {
-    return self.textInputbar.leftButton;
+    return self.textInputbar.leftButton1;
+}
+
+- (UIButton *)leftButton2
+{
+    return self.textInputbar.leftButton2;
 }
 
 - (UIButton *)rightButton
@@ -710,7 +716,12 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     return NO;
 }
 
-- (void)didPressLeftButton:(id)sender
+- (void)didPressLeftButton1:(id)sender
+{
+    // No implementation here. Meant to be overriden in subclass.
+}
+
+- (void)didPressLeftButton2:(id)sender
 {
     // No implementation here. Meant to be overriden in subclass.
 }
@@ -1902,7 +1913,11 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         BOOL shouldChange = YES;
         
         NSRange wordRange = range;
-        wordRange.location -= 2; // minus the white space added with the double space bar tapping
+        if(wordRange.location >= 2){
+            wordRange.location -= 2; // minus the white space added with the double space bar tapping
+        }else{
+            wordRange.location = 0;
+        }
         
         NSArray *symbols = textView.registeredSymbols;
         

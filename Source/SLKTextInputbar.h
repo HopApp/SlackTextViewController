@@ -50,7 +50,8 @@ typedef NS_ENUM(NSUInteger, SLKCounterPosition) {
 @property (nonatomic, strong) SLKInputAccessoryView *inputAccessoryView;
 
 /** The left action button action. */
-@property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *leftButton1;
+@property (nonatomic, strong) UIButton *leftButton2;
 
 /** The right action button action. */
 @property (nonatomic, strong) UIButton *rightButton;
