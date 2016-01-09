@@ -550,7 +550,7 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
 
 - (BOOL)canBecomeFirstResponder
 {
-    [self slk_addCustomMenuControllerItems];
+//    [self slk_addCustomMenuControllerItems];
     
     return [super canBecomeFirstResponder];
 }
@@ -713,14 +713,14 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
     _didNotResignFirstResponder = NO;
 }
 
-- (void)slk_addCustomMenuControllerItems
-{
-    UIMenuItem *undo = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Undo", nil) action:@selector(slk_undo:)];
-    UIMenuItem *redo = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Redo", nil) action:@selector(slk_redo:)];
-    UIMenuItem *format = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Format", nil) action:@selector(slk_presentFormattingMenu:)];
-    
-    [[UIMenuController sharedMenuController] setMenuItems:@[undo, redo, format]];
-}
+//- (void)slk_addCustomMenuControllerItems
+//{
+//    UIMenuItem *undo = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Undo", nil) action:@selector(slk_undo:)];
+//    UIMenuItem *redo = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Redo", nil) action:@selector(slk_redo:)];
+//    UIMenuItem *format = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Format", nil) action:@selector(slk_presentFormattingMenu:)];
+//    
+//    [[UIMenuController sharedMenuController] setMenuItems:@[undo, redo, format]];
+//}
 
 - (void)slk_undo:(id)sender
 {
@@ -895,7 +895,7 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
 {
     self.formatting = NO;
     
-    [self slk_addCustomMenuControllerItems];
+//    [self slk_addCustomMenuControllerItems];
 }
 
 
