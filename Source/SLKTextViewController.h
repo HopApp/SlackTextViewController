@@ -64,6 +64,9 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 /** The main scroll view managed by the controller object. Not nil if the controller is initialised with -initWithScrollView: */
 @property (nonatomic, readonly) UIScrollView *scrollView;
 
+/** The top layout constraint of the main scroll view managed by the controller object. */
+@property (nonatomic, readonly) NSLayoutConstraint *scrollViewTopConstraint;
+
 /** The bottom toolbar containing a text view and buttons. */
 @property (nonatomic, readonly) SLKTextInputbar *textInputbar;
 

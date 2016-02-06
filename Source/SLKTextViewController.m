@@ -72,6 +72,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @synthesize tableView = _tableView;
 @synthesize collectionView = _collectionView;
 @synthesize scrollView = _scrollView;
+@synthesize scrollViewTopConstraint = _scrollViewTopConstraint;
 @synthesize typingIndicatorProxyView = _typingIndicatorProxyView;
 @synthesize textInputbar = _textInputbar;
 @synthesize autoCompletionView = _autoCompletionView;
@@ -184,6 +185,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [self.view addSubview:self.textInputbar];
     
     [self slk_setupViewConstraints];
+    
+    // clips to bounds
+    [self.scrollViewProxy setClipsToBounds:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -2158,6 +2162,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[textInputbar]|" options:0 metrics:nil views:views]];
     
     self.scrollViewHC = [self.view slk_constraintForAttribute:NSLayoutAttributeHeight firstItem:self.scrollViewProxy secondItem:nil];
+    _scrollViewTopConstraint = [self.view slk_constraintForAttribute:NSLayoutAttributeTop firstItem:self.scrollViewProxy secondItem:self.view];
+    
     self.autoCompletionViewHC = [self.view slk_constraintForAttribute:NSLayoutAttributeHeight firstItem:self.autoCompletionView secondItem:nil];
     self.typingIndicatorViewHC = [self.view slk_constraintForAttribute:NSLayoutAttributeHeight firstItem:self.typingIndicatorProxyView secondItem:nil];
     self.textInputbarHC = [self.view slk_constraintForAttribute:NSLayoutAttributeHeight firstItem:self.textInputbar secondItem:nil];
@@ -2377,6 +2383,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     _collectionView = nil;
     
     _scrollView = nil;
+    _scrollViewTopConstraint = nil;
     
     _autoCompletionView.delegate = nil;
     _autoCompletionView.dataSource = nil;
